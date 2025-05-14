@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Useless Home Page </h1>
+    </header>
+    <div class="main" id="uselessButton">
+        <button onclick="goToRandomLink()">Press For More Uselessness!</button>
+    </div>
+
+    
+
+    <script>
+      const links = [
+        "fourSquares/squares.html",
+        "clicker/clicker.html",
+        "reflex/reflex.html"
+      ];
+  
+      function goToRandomLink() {
+        const randomIndex = Math.floor(Math.random() * links.length);
+        const randomLink = links[randomIndex];
+        window.location.href = randomLink; // Navigate to the random link
+      }
+      ////////////////////////////^Logic^//// \/ Server \/ /////////////////////////////////////////////////
+      document.getElementById("uselessButton").addEventListener("click", async () => {
+        const apiUrl = "https://o3qmwssed6.execute-api.us-east-2.amazonaws.com/default/useless_updater";
+
+
+        //What is sent to the server page (JSON)
+        const requestBody = {
+          page_id: 1,
+          useless_queries: 1
+        };
+    
+        try {
+          const response = await fetch(apiUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(requestBody)
+          });
+    
+          const result = await response.json();
+          console.log("Updated item:", result);
+        } catch (error) {
+          console.error("Error calling API:", error);
+        }
+      });
+    </script>
+</body>
+</html>
