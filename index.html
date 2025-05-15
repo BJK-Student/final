@@ -3,57 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Benjamkin Kopecky</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to the Useless Home Page </h1>
-    </header>
-    <div class="main" id="uselessButton">
-        <button onclick="goToRandomLink()">Press For More Uselessness!</button>
-    </div>
+    <nav>
 
+    </nav>
+    <main>
+        <h1>Hello, I am Benjamin Kopecky</h1>
+        <div>
+            <h3>About me</h3>
+            <p>
+                I'm a computer science student at the University of Wisconsin Green Bay, with a deep curiosity about the frontiers of technology and human understanding. My academic interests focus heavily on artificial intelligence—not just the technical side, but the ethical and philosophical dimensions that shape its role in society. I'm fascinated by questions of consciousness, agency, and what it means to build machines that may one day rival or augment human thought.
+
+Beyond code and computation, I have a lifelong passion for science in all its forms, from the mysteries of space to the fundamental laws of nature. For me, learning has always been about pushing toward discovery—driven not by grades, but by wonder. As a former Boy Scout, I carry with me a respect for problem-solving, teamwork, and perseverance in unfamiliar territory, whether that's in the wild or at the cutting edge of research.
+
+Ultimately, I hope to play a role in helping humanity move forward—through ethical innovation, thoughtful design, and a commitment to making knowledge accessible and impactful.
+            </p>
+        </div>
+        <div class="wrapper">
+            <div>
+            <h3>Interests</h3>
+                <ul>
+                    <li>Robotics</li>
+                    <li>AI</li>
+                    <li>Space</li>
+                    <li>Philosophy</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Contact me</h3>
+                <ul>
+                    <li>Email: kopeb16@uwgb.edu</li>
+                    <li>Phone: (920)483-0814</li>
+
+                </ul>
+            </div>
+        </div>
+    </main>
     
-
-    <script>
-      const links = [
-        "fourSquares/squares.html",
-        "clicker/clicker.html",
-        "reflex/reflex.html"
-      ];
-  
-      function goToRandomLink() {
-        const randomIndex = Math.floor(Math.random() * links.length);
-        const randomLink = links[randomIndex];
-        window.location.href = randomLink; // Navigate to the random link
-      }
-      ////////////////////////////^Logic^//// \/ Server \/ /////////////////////////////////////////////////
-      document.getElementById("uselessButton").addEventListener("click", async () => {
-        const apiUrl = "https://o3qmwssed6.execute-api.us-east-2.amazonaws.com/default/useless_updater";
-
-
-        //What is sent to the server page (JSON)
-        const requestBody = {
-          page_id: 1,
-          useless_queries: 1
-        };
-    
-        try {
-          const response = await fetch(apiUrl, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(requestBody)
-          });
-    
-          const result = await response.json();
-          console.log("Updated item:", result);
-        } catch (error) {
-          console.error("Error calling API:", error);
-        }
-      });
-    </script>
 </body>
 </html>
